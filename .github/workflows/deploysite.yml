@@ -63,9 +63,9 @@ jobs:
       - name: Build with Gatsby
         env:
           PREFIX_PATHS: 'true'
-          SANITY_PROJECT_DATASET: ${{ env.SANITY_PROJECT_DATASET }}
-          SANITY_PROJECT_ID: ${{ env.SANITY_PROJECT_ID }}
-          SANITY_READ_TOKEN: ${{ env.SANITY_READ_TOKEN }}
+          SANITY_PROJECT_DATASET: ${{ secrets.SANITY_PROJECT_DATASET }}
+          SANITY_PROJECT_ID: ${{ secrets.SANITY_PROJECT_ID }}
+          SANITY_READ_TOKEN: ${{ secrets.SANITY_READ_TOKEN }}
         run: ${{ steps.detect-package-manager.outputs.manager }} run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
