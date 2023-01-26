@@ -10,17 +10,11 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
 # Default to bash
 defaults:
   run:
     shell: bash
-    working-directory: ./redjacket
+    working-directory: redjacket
 
 jobs:
   # Build job
@@ -50,6 +44,7 @@ jobs:
         with:
           node-version: "18"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
+          cache-dependency-path: redjacket/package-lock.json
       - name: Restore cache
         uses: actions/cache@v3
         with:
@@ -74,7 +69,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: ./public
+          path: redjacket/public
 
   # Deployment job
   web-deploy:
@@ -101,7 +96,7 @@ jobs:
           ftp-password: ${{ secrets.REDJACKET_FTP_PASS }}
           # The local folder to copy, defaults to root project folder
           # optional, default is ./
-          local-dir: ./redjacket/public/
+          local-dir: redjacket/public/
           server-dir: ./public_html/www/
           # Passes through options into git-ftp
           #git-ftp-args: # optional
