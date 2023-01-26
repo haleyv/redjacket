@@ -25,6 +25,7 @@ defaults:
 jobs:
   # Build job
   build:
+    environment: production
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -60,11 +61,16 @@ jobs:
             ${{ runner.os }}-gatsby-build-
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
-      - name: 'Create env file'
-        run: |
-          echo "${{ secrets.REDJACKET_ENV }}" .env
       - name: Build with Gatsby
-        run: ${{ steps.detect-package-manager.outputs.manager }} run build
+        env:
+          REDJACKET_SANITY_ID: ${{ secrets.REDJACKET_SANITY_ID }}
+          REDJACKET_SANITY_DATASET: ${{ secrets.REDJACKET_SANITY_DATASET }}
+          REDJACKET_SANITY_TOKEN: ${{ secrets.REDJACKET_SANITY_TOKEN }}
+        run: |
+          echo SANITY_READ_TOKEN: '${REDJACKET_SANITY_TOKEN}'
+          echo SANITY_PROJECT_ID: '${REDJACKET_SANITY_ID}'
+          echo SANITY_PROJECT_DATASET: '${REDJACKET_SANITY_DATASET}'
+          ${{ steps.detect-package-manager.outputs.manager }} run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
