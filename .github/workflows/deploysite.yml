@@ -44,7 +44,7 @@ jobs:
         with:
           node-version: "18"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
-          cache-dependency-path: redjacket/package-lock.json
+          cache-dependency-path: package-lock.json
       - name: Restore cache
         uses: actions/cache@v3
         with:
@@ -96,7 +96,7 @@ jobs:
           ftp-password: ${{ secrets.REDJACKET_FTP_PASS }}
           # The local folder to copy, defaults to root project folder
           # optional, default is ./
-          local-dir: redjacket/public/
+          local-dir: public/
           server-dir: ./public_html/www/
           # Passes through options into git-ftp
           #git-ftp-args: # optional
