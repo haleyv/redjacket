@@ -10,17 +10,6 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-# Allow one concurrent deployment
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
-
 # Default to bash
 defaults:
   run:
@@ -29,6 +18,7 @@ defaults:
 jobs:
   # Build job
   build:
+    environment: production
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -53,14 +43,7 @@ jobs:
         with:
           node-version: "18"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v2
-        with:
-          # Automatically inject pathPrefix in your Gatsby configuration file.
-          #
-          # You may remove this line if you want to manage the configuration yourself.
-          static_site_generator: gatsby
+          cache-dependency-path: package-lock.json
       - name: Restore cache
         uses: actions/cache@v3
         with:
@@ -74,12 +57,18 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Gatsby
         env:
-          PREFIX_PATHS: 'true'
-        run: ${{ steps.detect-package-manager.outputs.manager }} run build
+          REDJACKET_SANITY_ID: ${{ secrets.REDJACKET_SANITY_ID }}
+          REDJACKET_SANITY_DATASET: ${{ secrets.REDJACKET_SANITY_DATASET }}
+          REDJACKET_SANITY_TOKEN: ${{ secrets.REDJACKET_SANITY_TOKEN }}
+        run: |
+          echo SANITY_READ_TOKEN: '${REDJACKET_SANITY_TOKEN}'
+          echo SANITY_PROJECT_ID: '${REDJACKET_SANITY_ID}'
+          echo SANITY_PROJECT_DATASET: '${REDJACKET_SANITY_DATASET}'
+          ${{ steps.detect-package-manager.outputs.manager }} run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: ./public
+          path: public
 
   # Deployment job
   web-deploy:
@@ -106,7 +95,7 @@ jobs:
           ftp-password: ${{ secrets.REDJACKET_FTP_PASS }}
           # The local folder to copy, defaults to root project folder
           # optional, default is ./
-          local-dir: ./redjacket/public/
+          local-dir: public/
           server-dir: ./public_html/www/
           # Passes through options into git-ftp
           #git-ftp-args: # optional

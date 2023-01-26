@@ -1,0 +1,10 @@
+.env*
+!.env.EXAMPLE
+.cache
+.DS_Store
+dist
+node_modules
+public
+redjacket
+package-lock.json
+yarn.lock
