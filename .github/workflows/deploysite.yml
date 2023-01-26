@@ -60,12 +60,10 @@ jobs:
             ${{ runner.os }}-gatsby-build-
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+      - name: 'Create env file'
+        run: |
+          echo "${{ secrets.REDJACKET_ENV }}" .env
       - name: Build with Gatsby
-        env:
-          PREFIX_PATHS: 'true'
-          SANITY_PROJECT_DATASET: ${{ env.production.SANITY_PROJECT_DATASET }}
-          SANITY_PROJECT_ID: ${{ env.production.SANITY_PROJECT_ID }}
-          SANITY_READ_TOKEN: ${{ env.production.SANITY_READ_TOKEN }}
         run: ${{ steps.detect-package-manager.outputs.manager }} run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
