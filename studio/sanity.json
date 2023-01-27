@@ -5,7 +5,7 @@
     "projectId": "s1ec1xxg"
   },
   "project": {
-    "name": "homepage-starter"
+    "name": "redjacket"
   },
   "plugins": [
     "@sanity/base",
