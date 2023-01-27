@@ -43,7 +43,6 @@ jobs:
         with:
           node-version: "18"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
-          cache-dependency-path: package-lock.json
       - name: Restore cache
         uses: actions/cache@v3
         with:
