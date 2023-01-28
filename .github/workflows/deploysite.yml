@@ -37,12 +37,14 @@ jobs:
           key: ${{ runner.os }}-gatsby-build-${{ hashFiles('public') }}
           restore-keys: |
             ${{ runner.os }}-gatsby-build-
-      - name: Install Sanity CLI 
-        run: yarn global add @sanity/cli
-      - name: Build with Sanity
+      - name: Install Sanity dependencies
         working-directory: ./studio
         run: |
           yarn install
+          yarn add @sanity/cli
+      - name: Build with Sanity
+        working-directory: ./studio
+        run: |
           yarn sanity build
           ls -la dist 
       - name: Deploy Sanity
