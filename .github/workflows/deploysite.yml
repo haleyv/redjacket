@@ -40,22 +40,30 @@ jobs:
           npm install
           npm install -g @sanity/cli
       - name: Install Sanity dependencies
-        if: steps.npm-cache.outputs.cache-hit != 'true'
-        run: npm install
+        run: |
+          npm install
+          npm run build
+          npm run deploy
         working-directory: studio
-      - name: Clean-install Gatsby dependencies
-        if: steps.npm-cache.outputs.cache-hit == 'true'
-        run: npm ci
-      - name: Clean-install Sanity dependencies
-        if: steps.npm-cache.outputs.cache-hit == 'true'
-        run: npm ci
-        working-directory: studio
-      - name: Build with Sanity
-        uses: sanity-io/github-action-sanity@v0.4
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.REDJACKET_SANITY_DEPLOY }}
-        with:
-          args: studio deploy
+      # - name: Install Sanity dependencies
+      #   if: steps.npm-cache.outputs.cache-hit != 'true'
+      #   run: npm install
+      #   working-directory: studio
+      # - name: Clean-install Gatsby dependencies
+      #   if: steps.npm-cache.outputs.cache-hit == 'true'
+      #   run: npm ci
+      # - name: Clean-install Sanity dependencies
+      #   if: steps.npm-cache.outputs.cache-hit == 'true'
+      #   run: npm ci
+      #   working-directory: studio
+      # - name: Build with Sanity
+      #   uses: sanity-io/github-action-sanity@v0.4
+      #   env:
+      #     SANITY_AUTH_TOKEN: ${{ secrets.REDJACKET_SANITY_DEPLOY }}
+      #   with:
+      #     args: studio deploy
       - name: Build with Gatsby
         env:
           REDJACKET_SANITY_ID: ${{ secrets.REDJACKET_SANITY_ID }}
