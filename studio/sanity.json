@@ -9,6 +9,7 @@
   },
   "plugins": [
     "@sanity/base",
+    "@sanity/cli",
     "@sanity/default-layout",
     "@sanity/default-login",
     "@sanity/desk-tool",
@@ -17,7 +18,7 @@
   "env": {
     "production": {
       "project": {
-        "basePath": "/__sanity"
+        "basePath": "/studio"
       }
     }
   },
