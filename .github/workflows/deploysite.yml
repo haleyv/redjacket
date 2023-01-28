@@ -38,13 +38,15 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gatsby-build-
       - name: Install Gatsby dependencies
-        run: yarn install
+        run: |
+          yarn install
+          yarn add global @sanity/cli
       - name: Install Sanity dependencies
         working-directory: ./studio
         run: yarn install
       - name: Build with Sanity
         working-directory: ./studio
-        run: yarn sanity build
+        run: sanity build
       - name: Deploy Sanity
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.REDJACKET_SANITY_DEPLOY }}
