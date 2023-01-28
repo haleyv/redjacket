@@ -1,6 +1,7 @@
 const fs = require("fs")
 const Configstore = require("configstore")
 const studio = require("../studio/sanity.json")
+const sanityClient = require('@sanity/client')
 
 const config = new Configstore(
   "sanity",
@@ -9,9 +10,19 @@ const config = new Configstore(
     globalConfigPath: true,
   }
 )
+
 const token = process.env.SANITY_READ_TOKEN || config.get("authToken")
 const dataset = process.env.SANITY_PROJECT_DATASET || studio.api?.dataset
 const projectId = process.env.SANITY_PROJECT_ID || studio.api?.projectId
+
+const client = sanityClient({
+  projectId: `${projectId}`,
+  dataset: `${dataset}`,
+  apiVersion: Date(), // use current UTC date - see "specifying API version"!
+  token: `${token}`, // or leave blank for unauthenticated usage
+  useCdn: false, // `false` if you want to ensure fresh data
+  withCredentials: true
+})
 
 if (!token) {
   throw new Error("Could not find Sanity token.")
@@ -40,3 +51,5 @@ fs.writeFileSync(".env.production", content)
 console.log(
   "Sanity environment variables written to `.env.development` and `.env.production`"
 )
+
+export default client
