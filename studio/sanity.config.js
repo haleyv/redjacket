@@ -2,6 +2,6 @@ import {defineConfig} from 'sanity'
 
 export default defineConfig({
 	title: 'Red Jacket Studio',
-	basePath: '/__sanity',
+	basePath: '/studio',
   // ...config cont'd
 })

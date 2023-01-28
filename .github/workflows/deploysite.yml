@@ -16,7 +16,19 @@ defaults:
     shell: bash
 
 jobs:
-  # Build job
+  sanity-deploy:
+    environment: production
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Sanity deploy
+        uses: sanity-io/github-action-sanity@v0.4
+        env:
+          SANITY_AUTH_TOKEN: ${{ secrets.REDJACKET_SANITY_DEPLOY }}
+        with:
+          args: studio deploy
+
   build:
     environment: production
     runs-on: ubuntu-latest
@@ -38,22 +50,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gatsby-build-
       - name: Install Gatsby dependencies
-        run: |
-          yarn install
-          yarn add global @sanity/cli
-      - name: Install Sanity dependencies
-        working-directory: ./studio
-        run: yarn install
-      - name: Build with Sanity
-        working-directory: ./studio
-        run: sanity build
-      - name: Deploy Sanity
-        env:
-          SANITY_AUTH_TOKEN: ${{ secrets.REDJACKET_SANITY_DEPLOY }}
-        working-directory: ./studio
-        run: |
-          echo SANITY_AUTH_TOKEN: '${SANITY_AUTH_TOKEN}'
-          yarn sanity deploy
+        run:  yarn
       - name: Build with Gatsby
         env:
           REDJACKET_SANITY_ID: ${{ secrets.REDJACKET_SANITY_ID }}
