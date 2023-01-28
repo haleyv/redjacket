@@ -26,35 +26,26 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "18"
-      - name: Restore Gatsby cache
+      - name: Restore cache
         uses: actions/cache@v3
-        id: gatsby-cache # use this to check for `cache-hit` ==> if: steps.npm-cache.outputs.cache-hit != 'true'
+        id: npm-cache # use this to check for `cache-hit` ==> if: steps.npm-cache.outputs.cache-hit != 'true'
         with:
-          path: ${{ steps.gatsby-cache-dir.outputs.dir }}
-          key: ${{ runner.os }}-gatsby-${{ hashFiles('**/package-lock.json') }}
+          path: ${{ steps.npm-cache-dir.outputs.dir }}
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-gatsby-
-      - name: Install Gatsby dependencies
+            ${{ runner.os }}-npm-
+      - name: Install dependencies
         if: steps.npm-cache.outputs.cache-hit != 'true'
         run: |
           npm install
           npm install -g @sanity/cli
-      - name: Clean-install Gatsby dependencies
-        if: steps.npm-cache.outputs.cache-hit == 'true'
-        run: npm ci
-      - name: Restore Sanity cache
-        uses: actions/cache@v3
-        id: sanity-cache # use this to check for `cache-hit` ==> if: steps.npm-cache.outputs.cache-hit != 'true'
-        working-directory: studio
-        with:
-          path: ${{ steps.sanity-cache-dir.outputs.dir }}
-          key: ${{ runner.os }}-sanity-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-sanity-
       - name: Install Sanity dependencies
         if: steps.npm-cache.outputs.cache-hit != 'true'
         run: npm install
         working-directory: studio
+      - name: Clean-install Gatsby dependencies
+        if: steps.npm-cache.outputs.cache-hit == 'true'
+        run: npm ci
       - name: Clean-install Sanity dependencies
         if: steps.npm-cache.outputs.cache-hit == 'true'
         run: npm ci
