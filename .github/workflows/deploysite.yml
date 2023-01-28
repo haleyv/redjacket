@@ -41,14 +41,10 @@ jobs:
         run: yarn install
       - name: Install Sanity dependencies
         working-directory: ./studio
-        run: |
-          yarn install
-          yarn add @sanity/cli
+        run: yarn install
       - name: Build with Sanity
         working-directory: ./studio
-        run: |
-          yarn sanity build
-          ls -la dist 
+        run: yarn sanity build
       - name: Deploy Sanity
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.REDJACKET_SANITY_DEPLOY }}

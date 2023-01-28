@@ -9,7 +9,6 @@
   },
   "plugins": [
     "@sanity/base",
-    "@sanity/cli",
     "@sanity/default-layout",
     "@sanity/default-login",
     "@sanity/desk-tool",
