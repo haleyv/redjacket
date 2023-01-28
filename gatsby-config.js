@@ -3,6 +3,8 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
+const isProd = process.env.NODE_ENV === "production"
+
 module.exports = {
   plugins: [
     {
@@ -11,8 +13,9 @@ module.exports = {
         projectId: `${process.env.SANITY_PROJECT_ID}`,
         dataset: `${process.env.SANITY_PROJECT_DATASET}`,
         token: process.env.SANITY_READ_TOKEN,
-        watchMode: true,
-        overlayDrafts: true,
+        graphqlTag: 'default',
+        watchMode: !isProd, // watchMode only in dev mode
+        overlayDrafts: !isProd // drafts only in dev mode
       },
     },
     "gatsby-plugin-sharp",
@@ -22,8 +25,8 @@ module.exports = {
     {
       resolve: "gatsby-plugin-manifest",
       options: {
-        name: "Gatsby Starter Sanity Homepage",
-        short_name: "Gatsby",
+        name: "Red Jacket Renovations",
+        short_name: "redjacket",
         start_url: "/",
         // These can be imported once ESM support lands
         background_color: "#ffe491",
