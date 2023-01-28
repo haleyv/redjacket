@@ -39,16 +39,13 @@ jobs:
             ${{ runner.os }}-gatsby-build-
       - name: Install Sanity CLI 
         run: yarn global add @sanity/cli
-      - name: Install Sanity dependencies
-        working-directory: ./studio
-        run: yarn install  
-      - name: Build Studio
-        run: sanity build 
-        working-directory: studio
-      - name: Verify Build 
-        run: ls -la dist 
-        working-directory: studio
       - name: Build with Sanity
+        working-directory: ./studio
+        run: |
+          yarn install
+          yarn sanity build
+          ls -la dist 
+      - name: Deploy Sanity
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.REDJACKET_SANITY_DEPLOY }}
         working-directory: ./studio
