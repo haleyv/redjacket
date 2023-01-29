@@ -47,12 +47,12 @@ jobs:
           SANITY_PROJECT_ID: ${{ secrets.REDJACKET_SANITY_ID }}
           SANITY_PROJECT_DATASET: ${{ secrets.REDJACKET_SANITY_DATASET }}
           SANITY_READ_TOKEN: ${{ secrets.REDJACKET_SANITY_TOKEN }}
-          SANITY_DEPLOY_TOKE: ${{ secrets.REDJACKET_SANITY_DEPLOY }}
+          SANITY_DEPLOY_TOKEN: ${{ secrets.REDJACKET_SANITY_DEPLOY }}
         run: |
           echo SANITY_READ_TOKEN: '${SANITY_READ_TOKEN}'
           echo SANITY_PROJECT_ID: '${SANITY_PROJECT_ID}'
           echo SANITY_PROJECT_DATASET: '${SANITY_PROJECT_DATASET}'
-          echo SANITY_DEPLOY_TOKEN: '${SANITY_DEPLOY_TOKE}'
+          echo SANITY_DEPLOY_TOKEN: '${SANITY_DEPLOY_TOKEN}'
           npm run gatsby-provision
           npm run build
 
