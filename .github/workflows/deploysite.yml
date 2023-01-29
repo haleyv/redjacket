@@ -53,7 +53,7 @@ jobs:
           echo SANITY_PROJECT_ID: '${REDJACKET_SANITY_ID}'
           echo SANITY_PROJECT_DATASET: '${REDJACKET_SANITY_DATASET}'
           echo SANITY_DEPLOY_TOKEN: '${REDJACKET_SANITY_DEPLOY}'
-          npm gatsby-provision
+          npm run gatsby-provision
           npm run build
 
   # Deployment job
