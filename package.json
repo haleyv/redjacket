@@ -11,7 +11,8 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "setup": "node ./scripts/setup.js",
-    "gatsby-provision": "gatsby-provision-sanity --sanity-config-path='./studio' --sanity-content-path='./scripts/content.tar.gz'"
+    "gatsby-provision": "gatsby-provision-sanity --sanity-studio-path='./studio' --sanity-content-path='./scripts/content.tar.gz' --token=$process.env.SANITY_EDITOR_TOKEN --deploy-token=$process.env.SANITY_DEPLOY_TOKEN --project-id=$process.env.SANITY_PROJECT_ID --name=$process.env.SANITY_PROJECT_NAME --dataset=$process.env.SANITY_PROJECT_DATASET"
+
   },
   "dependencies": {
     "@fontsource/dm-mono": "^4.5.9",
