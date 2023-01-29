@@ -39,20 +39,20 @@ jobs:
         run: |
           npm install
           npm install -g @sanity/cli
-      - name: Clean-install Gatsby dependencies
+      - name: Clean-install dependencies
         if: steps.npm-cache.outputs.cache-hit == 'true'
         run: npm ci
       - name: Build with Gatsby
         env:
-          REDJACKET_SANITY_ID: ${{ secrets.REDJACKET_SANITY_ID }}
-          REDJACKET_SANITY_DATASET: ${{ secrets.REDJACKET_SANITY_DATASET }}
-          REDJACKET_SANITY_TOKEN: ${{ secrets.REDJACKET_SANITY_TOKEN }}
-          REDJACKET_SANITY_DEPLOY: ${{ secrets.REDJACKET_SANITY_DEPLOY }}
+          SANITY_PROJECT_ID: ${{ secrets.REDJACKET_SANITY_ID }}
+          SANITY_PROJECT_DATASET: ${{ secrets.REDJACKET_SANITY_DATASET }}
+          SANITY_READ_TOKEN: ${{ secrets.REDJACKET_SANITY_TOKEN }}
+          SANITY_DEPLOY_TOKE: ${{ secrets.REDJACKET_SANITY_DEPLOY }}
         run: |
-          echo SANITY_READ_TOKEN: '${REDJACKET_SANITY_TOKEN}'
-          echo SANITY_PROJECT_ID: '${REDJACKET_SANITY_ID}'
-          echo SANITY_PROJECT_DATASET: '${REDJACKET_SANITY_DATASET}'
-          echo SANITY_DEPLOY_TOKEN: '${REDJACKET_SANITY_DEPLOY}'
+          echo SANITY_READ_TOKEN: '${SANITY_READ_TOKEN}'
+          echo SANITY_PROJECT_ID: '${SANITY_PROJECT_ID}'
+          echo SANITY_PROJECT_DATASET: '${SANITY_PROJECT_DATASET}'
+          echo SANITY_DEPLOY_TOKEN: '${SANITY_DEPLOY_TOKE}'
           npm run gatsby-provision
           npm run build
 
