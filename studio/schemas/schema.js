@@ -38,6 +38,9 @@ import aboutProfile from "./aboutProfile"
 import aboutLeadership from "./aboutLeadership"
 import aboutLogoList from "./aboutLogoList"
 
+import contactPage from "./contactPage"
+import contactHero from "./contactHero"
+
 import servicesPage from "./servicesPage"
 import servicesHero from "./servicesHero"
 
@@ -81,6 +84,9 @@ export default createSchema({
     aboutProfile,
     aboutLeadership,
     aboutLogoList,
+    // contact page
+    contactPage,
+    contactHero,
     // services page
     servicesPage,
     servicesHero,

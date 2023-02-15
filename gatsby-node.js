@@ -327,6 +327,22 @@ exports.createSchemaCustomization = async ({ actions }) => {
       image: HomepageImage
     }
 
+    interface ContactPage implements Node {
+      id: ID!
+      title: String
+      description: String
+      image: HomepageImage
+      content: [HomepageBlock]
+    }
+
+    interface ContactHero implements Node & HomepageBlock {
+      id: ID!
+      blocktype: String
+      heading: String
+      text: String
+      image: HomepageImage
+    }
+
     interface Page implements Node {
       id: ID!
       slug: String!
