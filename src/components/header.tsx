@@ -104,8 +104,9 @@ export default function Header() {
         <Space size={2} />
         <Flex variant="spaceBetween">
           <NavLink to="/">
-            <VisuallyHidden>Home</VisuallyHidden>
-            <BrandLogo />
+            {/* <VisuallyHidden>Home</VisuallyHidden>
+            <BrandLogo /> */}
+            Red Jacket Renovations
           </NavLink>
           <nav>
             <FlexList gap={4}>
@@ -136,8 +137,8 @@ export default function Header() {
             }
           >
             <NavLink to="/">
-              <VisuallyHidden>Home</VisuallyHidden>
-              <BrandLogo />
+              {/* <VisuallyHidden>Home</VisuallyHidden>
+              <BrandLogo /> */}Red Jacket Renovations
             </NavLink>
           </span>
           <Flex>

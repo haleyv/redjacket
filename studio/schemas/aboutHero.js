@@ -1,6 +1,6 @@
 export default {
   name: "aboutHero",
-  title: "Page - About - Hero",
+  title: "Page: About - Hero",
   type: "document",
   fields: [
     { title: "Heading", name: "heading", type: "string" },

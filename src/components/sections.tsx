@@ -12,6 +12,11 @@ import { AboutStatListProps } from "./about-stat-list"
 import { AboutLeadershipProps } from "./about-leadership"
 import { AboutLogoListProps } from "./about-logo-list"
 
+import { ContactHeroProps } from "./contact-hero"
+
+import { ServicesHeroProps } from "./services-hero"
+
+
 export { default as HomepageHero } from "./hero"
 export { default as HomepageFeatureList } from "./feature-list"
 export { default as HomepageLogoList } from "./logo-list"
@@ -24,6 +29,8 @@ export { default as AboutHero } from "./about-hero"
 export { default as AboutStatList } from "./about-stat-list"
 export { default as AboutLeadership } from "./about-leadership"
 export { default as AboutLogoList } from "./about-logo-list"
+export { default as ContactHero } from "./contact-hero"
+export { default as ServicesHero } from "./services-hero"
 
 export type SectionProps =
   | HeroProps
@@ -38,6 +45,8 @@ export type SectionProps =
   | AboutStatListProps
   | AboutLeadershipProps
   | AboutLogoListProps
+  | ContactHeroProps
+  | ServicesHeroProps
 
 type Blocktypes =
   | "HomepageHero"
@@ -52,6 +61,8 @@ type Blocktypes =
   | "AboutStatList"
   | "AboutLeadership"
   | "AboutLogoList"
+  | "ContactHero"
+  | "ServicesHero"
 
 type WithBlocktype<B = Blocktypes, P = SectionProps> = {
   id: string
@@ -71,3 +82,5 @@ export type HomepageBlock =
   | WithBlocktype<"AboutStatList", AboutStatListProps>
   | WithBlocktype<"AboutLeadership", AboutLeadershipProps>
   | WithBlocktype<"AboutLogoList", AboutLogoListProps>
+  | WithBlocktype<"ContactHero", ContactHeroProps>
+  | WithBlocktype<"ServicesHero", ServicesHeroProps>

@@ -590,6 +590,38 @@ exports.createSchemaCustomization = async ({ actions }) => {
       logos: [HomepageLogo]
     }
 
+    type SanityContactPage implements Node & ContactPage {
+      id: ID!
+      title: String
+      description: String
+      image: HomepageImage @link(by: "id", from: "image.asset._ref")
+      content: [HomepageBlock]
+    }
+
+    type SanityContactHero implements Node & ContactHero & HomepageBlock {
+      id: ID!
+      blocktype: String @blocktype
+      heading: String
+      text: String
+      image: HomepageImage @link(by: "id", from: "image.asset._ref")
+    }
+
+    type SanityServicesPage implements Node & ServicesPage {
+      id: ID!
+      title: String
+      description: String
+      image: HomepageImage @link(by: "id", from: "image.asset._ref")
+      content: [HomepageBlock]
+    }
+
+    type SanityServicesHero implements Node & ServicesHero & HomepageBlock {
+      id: ID!
+      blocktype: String @blocktype
+      heading: String
+      text: String
+      image: HomepageImage @link(by: "id", from: "image.asset._ref")
+    }
+
     type SanityPage implements Node & Page {
       id: ID!
       slug: String! @proxy(from: "slug.current")

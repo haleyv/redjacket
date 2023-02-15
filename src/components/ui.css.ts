@@ -482,7 +482,11 @@ export const buttons: Record<ButtonVariants, string> = styleVariants({
     {
       color: theme.colors.background,
       backgroundColor: theme.colors.primary,
+      borderStyle: "solid",
+      borderWidth: "thin",
+      borderColor: theme.colors.primary,
       ":hover": {
+        color: theme.colors.primary,
         backgroundColor: theme.colors.active,
       },
       ":focus": {
