@@ -1,6 +1,6 @@
 export default {
   name: "socialLink",
-  title: "Social Link",
+  title: "Layout - Social Link",
   type: "document",
   fields: [
     {
