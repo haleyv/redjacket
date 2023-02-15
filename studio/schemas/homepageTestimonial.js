@@ -1,6 +1,6 @@
 export default {
   name: "homepageTestimonial",
-  title: "Homepage Testimonial",
+  title: "Page: Home - Testimonials - Testimonial",
   type: "document",
   fields: [
     { title: "Quote", name: "quote", type: "string" },

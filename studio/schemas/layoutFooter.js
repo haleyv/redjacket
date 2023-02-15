@@ -1,6 +1,6 @@
 export default {
   name: "layoutFooter",
-  title: "Layout Footer",
+  title: "Layout - Footer",
   type: "document",
   fields: [
     {

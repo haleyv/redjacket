@@ -1,6 +1,6 @@
 export default {
   name: "homepageFeature",
-  title: "Homepage Feature",
+  title: "Page: Home - Features - Feature",
   type: "document",
   fields: [
     { title: "Heading", name: "heading", type: "string" },

@@ -1,10 +1,10 @@
 export default {
   name: "layoutHeader",
-  title: "Layout Header",
+  title: "Layout - Header",
   type: "document",
   fields: [
     {
-      title: "Nav Items",
+      title: "Header Nav Items",
       name: "navItems",
       type: "array",
       of: [
@@ -15,7 +15,7 @@ export default {
       ],
     },
     {
-      title: "CTA",
+      title: "Header CTA",
       name: "cta",
       type: "reference",
       to: [{ type: "homepageLink" }],

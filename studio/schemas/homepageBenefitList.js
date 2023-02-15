@@ -1,6 +1,6 @@
 export default {
   name: "homepageBenefitList",
-  title: "Homepage Benefit List",
+  title: "Page: Home - Benefits",
   type: "document",
   fields: [
     { title: "Heading", name: "heading", type: "string" },

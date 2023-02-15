@@ -1,6 +1,6 @@
 export default {
   name: "homepageStatList",
-  title: "Homepage Stat List",
+  title: "Page: Home - Stats",
   type: "document",
   fields: [
     { title: "Heading", name: "heading", type: "string" },

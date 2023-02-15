@@ -1,6 +1,6 @@
 export default {
   name: "aboutStatList",
-  title: "About Stat List",
+  title: "Page - About - Stat List",
   type: "document",
   fields: [
     {

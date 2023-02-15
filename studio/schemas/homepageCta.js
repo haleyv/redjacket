@@ -1,6 +1,6 @@
 export default {
   name: "homepageCta",
-  title: "Homepage CTA",
+  title: "Page: Home - Call to Action",
   type: "document",
   fields: [
     { title: "Heading", name: "heading", type: "string" },

@@ -1,6 +1,6 @@
 export default {
   name: "homepageLogoList",
-  title: "Homepage Logo List",
+  title: "Page: Home - Customers",
   type: "document",
   fields: [
     { title: "Text", name: "text", type: "string" },

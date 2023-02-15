@@ -1,6 +1,6 @@
 export default {
   name: "aboutProfile",
-  title: "About Profile",
+  title: "Page - About - Profile",
   type: "document",
   fields: [
     { title: "Image", name: "image", type: "image" },

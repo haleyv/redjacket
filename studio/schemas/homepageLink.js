@@ -1,6 +1,6 @@
 export default {
   name: "homepageLink",
-  title: "Homepage Link",
+  title: "Page: Home - Links",
   type: "document",
   fields: [
     { title: "Text", name: "text", type: "string" },

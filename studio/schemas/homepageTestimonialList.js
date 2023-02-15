@@ -1,6 +1,6 @@
 export default {
   name: "homepageTestimonialList",
-  title: "Homepage Testimonial List",
+  title: "Page: Home - Testimonials",
   type: "document",
   fields: [
     { title: "Heading", name: "heading", type: "string" },

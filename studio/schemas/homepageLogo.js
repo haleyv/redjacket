@@ -1,6 +1,6 @@
 export default {
   name: "homepageLogo",
-  title: "Homepage Logo",
+  title: "Page: Home - Customers - Customer",
   type: "document",
   fields: [
     { title: "Image", name: "image", type: "image" },

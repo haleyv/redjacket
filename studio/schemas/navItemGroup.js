@@ -1,6 +1,6 @@
 export default {
   name: "navItemGroup",
-  title: "Nav Item Group",
+  title: "Layout - Menu Group",
   type: "document",
   fields: [
     { title: "Name", name: "name", type: "string" },

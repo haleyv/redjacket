@@ -1,6 +1,6 @@
 export default {
   name: "aboutLogoList",
-  title: "About Logo List",
+  title: "Page - About - Logo List",
   type: "document",
   fields: [
     { title: "Heading", name: "heading", type: "string" },
